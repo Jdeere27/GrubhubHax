@@ -2,7 +2,23 @@
 -- Version: 3.2
 
 -- Instances:
+myPlayer = game.Players.LocalPlayer
+ myChar = myPlayer.Character
+myHRP = myChar:WaitForChild("HumanoidRootPart")
 
+bp = Instance.new("BodyPosition", myHRP) -- Body Position that determines your location
+bp.MaxForce = Vector3.new()
+bp.D = 10
+bp.P = 10000
+
+bg = Instance.new("BodyGyro", myHRP) -- Body Gyro that determines your rotation
+bg.MaxTorque = Vector3.new()
+bg.D = 10
+
+flying = false -- Determines if you're in flight or not
+rs = game:GetService("RunService") -- Look me up
+camera = game.Workspace.CurrentCamera
+speed = 0.5 -- Speed of flight is kind of determined by this
 local Main = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local CrimSpawn = Instance.new("TextButton")
@@ -13,6 +29,7 @@ local CopSpawn = Instance.new("TextButton")
 local SaveTP = Instance.new("TextButton")
 local GotoSave = Instance.new("TextButton")
 local Speed50 = Instance.new("TextButton")
+local die = Instance.new("TextButton")
 local Speed16 = Instance.new("TextButton")
 local BecomeCrim = Instance.new("TextButton")
 local BigJump = Instance.new("TextButton")
@@ -20,9 +37,13 @@ local GateCtrl = Instance.new("TextButton")
 local Secret = Instance.new("TextButton")
 local Speed100 = Instance.new("TextButton")
 local NormalJump = Instance.new("TextButton")
-local die = Instance.new("TextButton")
+local FlyOn = Instance.new("TextButton")
+local FlyOff = Instance.new("TextButton")
+local NoClip = Instance.new("TextButton")
+local Clip = Instance.new("TextButton")
 
 --Properties:
+
 
 Main.Name = "Main"
 Main.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -30,7 +51,7 @@ Main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = Main
-MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundColor3 = Color3.fromRGB(129, 129, 129)
 MainFrame.Position = UDim2.new(0.140702471, 0, 0.529496431, 0)
 MainFrame.Size = UDim2.new(0, 190, 0, 239)
 
@@ -65,7 +86,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.2"
+TextLabel.Text = "GrubHub Hax  V0.3"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
@@ -247,4 +268,38 @@ die.TextSize = 22.000
 die.TextWrapped = true
 die.MouseButton1Down:connect(function()
 game:GetService("Players").LocalPlayer.Character.Humanoid.Health=0
+end)
+
+FlyOn.Name = "FlyOn"
+FlyOn.Parent = Main
+FlyOn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FlyOn.Position = UDim2.new(0.200646657, 0, 0.769539517, 0)
+FlyOn.Size = UDim2.new(0, 49, 0, 19)
+FlyOn.Font = Enum.Font.SourceSans
+FlyOn.Text = "Fly On"
+FlyOn.TextColor3 = Color3.fromRGB(0, 0, 0)
+FlyOn.TextSize = 17.000
+FlyOn.MouseButton1Down:connect(function()
+	flying = true
+	bp.MaxForce = Vector3.new(400000,400000,400000)
+	bg.MaxTorque = Vector3.new(400000,400000,400000)
+	while flying do
+		rs.RenderStepped:wait()
+		bp.Position = myHRP.Position +((myHRP.Position - camera.CFrame.p).unit * speed)
+		bg.CFrame = CFrame.new(camera.CFrame.p, myHRP.Position)
+	end
+end)
+FlyOff.Name = "FlyOff"
+FlyOff.Parent = Main
+FlyOff.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FlyOff.Position = UDim2.new(0.160073577, 0, 0.769539517, 0)
+FlyOff.Size = UDim2.new(0, 49, 0, 19)
+FlyOff.Font = Enum.Font.SourceSans
+FlyOff.Text = "Fly Off"
+FlyOff.TextColor3 = Color3.fromRGB(0, 0, 0)
+FlyOff.TextSize = 17.000
+FlyOff.MouseButton1Down:connect(function()
+bp.MaxForce = Vector3.new()
+	bg.MaxTorque = Vector3.new()
+	flying = false
 end)
