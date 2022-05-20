@@ -61,7 +61,7 @@ MainFrame.Size = UDim2.new(0, 190, 0, 245)
 CrimSpawn.Name = "CrimSpawn"
 CrimSpawn.Parent = Main
 CrimSpawn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-CrimSpawn.Position = UDim2.new(0.215646672, 0, 0.568345368, 0)
+CrimSpawn.Position = UDim2.new(0.215646672, 0, 0.571345308, 0)
 CrimSpawn.Size = UDim2.new(0, 49, 0, 19)
 CrimSpawn.Font = Enum.Font.SourceSans
 CrimSpawn.Text = "Crim Spawn"
@@ -89,14 +89,14 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.352"
+TextLabel.Text = "GrubHub Hax  V0.36"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
 Yard.Name = "Yard"
 Yard.Parent = Main
 Yard.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Yard.Position = UDim2.new(0.180073592, 0, 0.568345308, 0)
+Yard.Position = UDim2.new(0.180073592, 0, 0.571345308, 0)
 Yard.Size = UDim2.new(0, 49, 0, 19)
 Yard.Font = Enum.Font.SourceSans
 Yard.Text = "Yard"
@@ -219,7 +219,7 @@ end)
 GateCtrl.Name = "GateCtrl"
 GateCtrl.Parent = Main
 GateCtrl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-GateCtrl.Position = UDim2.new(0.145814959, 0, 0.568345308, 0)
+GateCtrl.Position = UDim2.new(0.145814959, 0, 0.571345308, 0)
 GateCtrl.Size = UDim2.new(0, 49, 0, 19)
 GateCtrl.Font = Enum.Font.SourceSans
 GateCtrl.Text = "GateCtrl"
@@ -401,4 +401,25 @@ Weapons.MouseButton1Down:connect(function()
 Workspace.Remote.ItemHandler:InvokeServer(Workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
 Workspace.Remote.ItemHandler:InvokeServer(Workspace.Prison_ITEMS.giver["M9"].ITEMPICKUP)
 Workspace.Remote.ItemHandler:InvokeServer(Workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP)
+local function WDPTDAW_fake_script() -- AutoFireM9.AutoFire 
+	local script = Instance.new('LocalScript', AutoFireM9)
+ 
+	local plr = game.Players.localPlayer
+ 
+	local gun = plr.Backpack.M9.GunStates
+	a = require(gun)
+	a.AutoFire = false
+end
+coroutine.wrap(WDPTDAW_fake_script)()
+local function LOJZH_fake_script() -- OneShotKillM9.one shot kill 
+	local script = Instance.new('LocalScript', OneShotKillM9)
+ 
+	local plr = game.Players.localPlayer
+ 
+	local gun = plr.Backpack.M9.GunStates
+ 
+	a = require(gun)
+	a.Bullets = 25
+end
+coroutine.wrap(LOJZH_fake_script)()
 end)
