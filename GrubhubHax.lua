@@ -18,7 +18,7 @@ bg.D = 10
 flying = false -- Determines if you're in flight or not
 rs = game:GetService("RunService") -- Look me up
 camera = game.Workspace.CurrentCamera
-speed = 0.5 -- Speed of flight is kind of determined by this
+speed = 0.25 -- Speed of flight is kind of determined by this
 local Main = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local CrimSpawn = Instance.new("TextButton")
@@ -38,6 +38,7 @@ local Secret = Instance.new("TextButton")
 local Speed100 = Instance.new("TextButton")
 local NormalJump = Instance.new("TextButton")
 local FlyOn = Instance.new("TextButton")
+local FlyFix = Instance.new("TextButton")
 local FlyOff = Instance.new("TextButton")
 local NoClip = Instance.new("TextButton")
 local Clip = Instance.new("TextButton")
@@ -53,7 +54,7 @@ MainFrame.Name = "MainFrame"
 MainFrame.Parent = Main
 MainFrame.BackgroundColor3 = Color3.fromRGB(129, 129, 129)
 MainFrame.Position = UDim2.new(0.140702471, 0, 0.529496431, 0)
-MainFrame.Size = UDim2.new(0, 190, 0, 239)
+MainFrame.Size = UDim2.new(0, 190, 0, 245)
 
 CrimSpawn.Name = "CrimSpawn"
 CrimSpawn.Parent = Main
@@ -86,7 +87,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.3"
+TextLabel.Text = "GrubHub Hax  V0.35"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
@@ -273,13 +274,17 @@ end)
 FlyOn.Name = "FlyOn"
 FlyOn.Parent = Main
 FlyOn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-FlyOn.Position = UDim2.new(0.200646657, 0, 0.769539517, 0)
+FlyOn.Position = UDim2.new(0.215646657, 0, 0.769539517, 0)
 FlyOn.Size = UDim2.new(0, 49, 0, 19)
 FlyOn.Font = Enum.Font.SourceSans
 FlyOn.Text = "Fly On"
 FlyOn.TextColor3 = Color3.fromRGB(0, 0, 0)
 FlyOn.TextSize = 17.000
 FlyOn.MouseButton1Down:connect(function()
+flying = false -- Determines if you're in flight or not
+rs = game:GetService("RunService") -- Look me up
+camera = game.Workspace.CurrentCamera
+speed = 0.25 -- Speed of flight is kind of determined by this
 	flying = true
 	bp.MaxForce = Vector3.new(400000,400000,400000)
 	bg.MaxTorque = Vector3.new(400000,400000,400000)
@@ -292,7 +297,7 @@ end)
 FlyOff.Name = "FlyOff"
 FlyOff.Parent = Main
 FlyOff.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-FlyOff.Position = UDim2.new(0.160073577, 0, 0.769539517, 0)
+FlyOff.Position = UDim2.new(0.180073577, 0, 0.769539517, 0)
 FlyOff.Size = UDim2.new(0, 49, 0, 19)
 FlyOff.Font = Enum.Font.SourceSans
 FlyOff.Text = "Fly Off"
@@ -302,4 +307,71 @@ FlyOff.MouseButton1Down:connect(function()
 bp.MaxForce = Vector3.new()
 	bg.MaxTorque = Vector3.new()
 	flying = false
+end)
+FlyFix.Name = "FlyFix"
+FlyFix.Parent = Main
+FlyFix.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FlyFix.Position = UDim2.new(0.146073577, 0, 0.769539517, 0)
+FlyFix.Size = UDim2.new(0, 49, 0, 19)
+FlyFix.Font = Enum.Font.SourceSans
+FlyFix.Text = "Fly Fix"
+FlyFix.TextColor3 = Color3.fromRGB(0, 0, 0)
+FlyFix.TextSize = 17.000
+FlyFix.MouseButton1Down:connect(function()
+myPlayer = game.Players.LocalPlayer
+ myChar = myPlayer.Character
+myHRP = myChar:WaitForChild("HumanoidRootPart")
+
+bp = Instance.new("BodyPosition", myHRP) -- Body Position that determines your location
+bp.MaxForce = Vector3.new()
+bp.D = 10
+bp.P = 10000
+
+bg = Instance.new("BodyGyro", myHRP) -- Body Gyro that determines your rotation
+bg.MaxTorque = Vector3.new()
+bg.D = 10
+
+flying = false -- Determines if you're in flight or not
+rs = game:GetService("RunService") -- Look me up
+camera = game.Workspace.CurrentCamera
+speed = 0.5 -- Speed of flight is kind of determined by this
+end)
+NoClip.Name = "NoClip"
+NoClip.Parent = Main
+NoClip.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NoClip.Position = UDim2.new(0.155914959, 0, 0.538345308, 0)
+NoClip.Size = UDim2.new(0, 49, 0, 19)
+NoClip.Font = Enum.Font.SourceSans
+NoClip.Text = "NoClip"
+NoClip.TextColor3 = Color3.fromRGB(0, 0, 0)
+NoClip.TextSize = 18.000
+NoClip.MouseButton1Down:connect(function()
+Penis=0
+plr = game.Players.LocalPlayer
+game["Run Service"].Stepped:connect(function()
+  plr = game.Players.LocalPlayer 
+  char = plr.Character
+  if Penis==1
+  then
+  game.Players.LocalPlayer.Character.Torso.CanCollide = true
+  game.Players.LocalPlayer.Character.Head.CanCollide = true
+end
+  if Penis==0
+  then
+  game.Players.LocalPlayer.Character.Torso.CanCollide = false
+  game.Players.LocalPlayer.Character.Head.CanCollide = false
+end
+end)
+end)
+Clip.Name = "Clip"
+Clip.Parent = Main
+Clip.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Clip.Position = UDim2.new(0.2046814959, 0, 0.538345308, 0)
+Clip.Size = UDim2.new(0, 49, 0, 19)
+Clip.Font = Enum.Font.SourceSans
+Clip.Text = "Clip"
+Clip.TextColor3 = Color3.fromRGB(0, 0, 0)
+Clip.TextSize = 18.000
+Clip.MouseButton1Down:connect(function()
+Penis=1
 end)
