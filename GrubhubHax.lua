@@ -42,6 +42,8 @@ local FlyFix = Instance.new("TextButton")
 local FlyOff = Instance.new("TextButton")
 local NoClip = Instance.new("TextButton")
 local Clip = Instance.new("TextButton")
+local Weapons = Instance.new("TextButton")
+
 
 --Properties:
 
@@ -87,7 +89,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.35"
+TextLabel.Text = "GrubHub Hax  V0.351"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
@@ -339,7 +341,7 @@ end)
 NoClip.Name = "NoClip"
 NoClip.Parent = Main
 NoClip.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-NoClip.Position = UDim2.new(0.155914959, 0, 0.538345308, 0)
+NoClip.Position = UDim2.new(0.145914959, 0, 0.538345308, 0)
 NoClip.Size = UDim2.new(0, 49, 0, 19)
 NoClip.Font = Enum.Font.SourceSans
 NoClip.Text = "NoClip"
@@ -366,7 +368,7 @@ end)
 Clip.Name = "Clip"
 Clip.Parent = Main
 Clip.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Clip.Position = UDim2.new(0.2046814959, 0, 0.538345308, 0)
+Clip.Position = UDim2.new(0.1796814959, 0, 0.538345308, 0)
 Clip.Size = UDim2.new(0, 49, 0, 19)
 Clip.Font = Enum.Font.SourceSans
 Clip.Text = "Clip"
@@ -374,4 +376,18 @@ Clip.TextColor3 = Color3.fromRGB(0, 0, 0)
 Clip.TextSize = 18.000
 Clip.MouseButton1Down:connect(function()
 Penis=1
+end)
+Weapons.Name = "Weapons"
+Weapons.Parent = Main
+Weapons.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Weapons.Position = UDim2.new(0.2156814959, 0, 0.538345308, 0)
+Weapons.Size = UDim2.new(0, 49, 0, 19)
+Weapons.Font = Enum.Font.SourceSans
+Weapons.Text = "Give Guns"
+Weapons.TextColor3 = Color3.fromRGB(0, 0, 0)
+Weapons.TextSize = 13.500
+Weapons.MouseButton1Down:connect(function()
+Workspace.Remote.ItemHandler:InvokeServer(Workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+Workspace.Remote.ItemHandler:InvokeServer(Workspace.Prison_ITEMS.giver["M9"].ITEMPICKUP)
+Workspace.Remote.ItemHandler:InvokeServer(Workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP)
 end)
