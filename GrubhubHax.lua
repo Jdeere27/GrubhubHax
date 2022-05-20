@@ -43,7 +43,7 @@ local FlyOff = Instance.new("TextButton")
 local NoClip = Instance.new("TextButton")
 local Clip = Instance.new("TextButton")
 local Weapons = Instance.new("TextButton")
-
+local SCRAM = Instance.new("TextButton")
 
 --Properties:
 
@@ -89,7 +89,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.351"
+TextLabel.Text = "GrubHub Hax  V0.352"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
@@ -105,7 +105,18 @@ Yard.TextSize = 18.000
 Yard.MouseButton1Down:connect(function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(786.364,97.988,2465.035))
 end)
-
+SCRAM.Name = "SCRAM"
+SCRAM.Parent = Main
+SCRAM.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SCRAM.Position = UDim2.new(0.252673592, 0, 0.568345308, 0)
+SCRAM.Size = UDim2.new(0, 49, 0, 159)
+SCRAM.Font = Enum.Font.SourceSans
+SCRAM.Text = "SCRAM"
+SCRAM.TextColor3 = Color3.fromRGB(0, 0, 0)
+SCRAM.TextSize = 18.000
+SCRAM.MouseButton1Down:connect(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-346.653,84.3,1975.088))
+end)
 CopSpawn.Name = "Cop Spawn"
 CopSpawn.Parent = Main
 CopSpawn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
