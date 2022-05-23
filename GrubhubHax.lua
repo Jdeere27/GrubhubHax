@@ -2,6 +2,14 @@
 -- Version: 3.2
 
 -- Instances:
+WalkSpeed = 16
+JumpPower = 50
+game["Run Service"].Stepped:connect(function()
+game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed
+end)
+game["Run Service"].Stepped:connect(function()
+game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = JumpPower
+end)
 myPlayer = game.Players.LocalPlayer
  myChar = myPlayer.Character
 myHRP = myChar:WaitForChild("HumanoidRootPart")
@@ -89,7 +97,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.36"
+TextLabel.Text = "GrubHub Hax  V0.361"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
@@ -168,7 +176,7 @@ Speed50.Text = "Speed 50"
 Speed50.TextColor3 = Color3.fromRGB(0, 0, 0)
 Speed50.TextSize = 15.000
 Speed50.MouseButton1Down:connect(function()
-game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 50
+WalkSpeed = 50
 end)
 
 Speed16.Name = "Speed16"
@@ -181,7 +189,7 @@ Speed16.Text = "Speed 16"
 Speed16.TextColor3 = Color3.fromRGB(0, 0, 0)
 Speed16.TextSize = 15.000
 Speed16.MouseButton1Down:connect(function()
-game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+WalkSpeed = 16
 end)
 
 BecomeCrim.Name = "BecomeCrim"
@@ -213,7 +221,7 @@ BigJump.Text = "Big Jump"
 BigJump.TextColor3 = Color3.fromRGB(0, 0, 0)
 BigJump.TextSize = 14.000
 BigJump.MouseButton1Down:connect(function()
-game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = 150
+JumpPower = 150
 end)
 
 GateCtrl.Name = "GateCtrl"
@@ -254,7 +262,7 @@ Speed100.TextColor3 = Color3.fromRGB(0, 0, 0)
 Speed100.TextSize = 13.000
 Speed100.TextWrapped = true
 Speed100.MouseButton1Down:connect(function()
-game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 100
+WalkSpeed = 100
 end)
 
 NormalJump.Name = "NormalJump"
@@ -268,7 +276,7 @@ NormalJump.TextColor3 = Color3.fromRGB(0, 0, 0)
 NormalJump.TextSize = 15.000
 NormalJump.TextWrapped = true
 NormalJump.MouseButton1Down:connect(function()
-game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = 50
+JumpPower = 50
 end)
 die.Name = "die"
 die.Parent = Main
