@@ -4,12 +4,23 @@
 -- Instances:
 WalkSpeed = 16
 JumpPower = 50
+Poopies=1
+HP = game:GetService("Players").LocalPlayer.Character.Humanoid.Health
+print(HP)
 game["Run Service"].Stepped:connect(function()
 game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeed
 end)
 game["Run Service"].Stepped:connect(function()
 game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = JumpPower
 end)
+game["Run Service"].Stepped:connect(function()
+HP = game:GetService("Players").LocalPlayer.Character.Humanoid.Health
+if HP<=0.1 and Poopies==1
+then
+Poopies=0
+print("Detected Death")
+wait(6)
+print("debug")
 myPlayer = game.Players.LocalPlayer
  myChar = myPlayer.Character
 myHRP = myChar:WaitForChild("HumanoidRootPart")
@@ -26,7 +37,29 @@ bg.D = 10
 flying = false -- Determines if you're in flight or not
 rs = game:GetService("RunService") -- Look me up
 camera = game.Workspace.CurrentCamera
-speed = 0.25 -- Speed of flight is kind of determined by this
+speed = 1.5 -- Speed of flight is kind of determined by this
+Poopies=1
+end
+end)
+
+
+myPlayer = game.Players.LocalPlayer
+ myChar = myPlayer.Character
+myHRP = myChar:WaitForChild("HumanoidRootPart")
+
+bp = Instance.new("BodyPosition", myHRP) -- Body Position that determines your location
+bp.MaxForce = Vector3.new()
+bp.D = 10
+bp.P = 10000
+
+bg = Instance.new("BodyGyro", myHRP) -- Body Gyro that determines your rotation
+bg.MaxTorque = Vector3.new()
+bg.D = 10
+
+flying = false -- Determines if you're in flight or not
+rs = game:GetService("RunService") -- Look me up
+camera = game.Workspace.CurrentCamera
+speed = 1.5 -- Speed of flight is kind of determined by this
 local Main = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local CrimSpawn = Instance.new("TextButton")
@@ -97,7 +130,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.361"
+TextLabel.Text = "GrubHub Hax  V0.362"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
 
@@ -305,7 +338,7 @@ FlyOn.MouseButton1Down:connect(function()
 flying = false -- Determines if you're in flight or not
 rs = game:GetService("RunService") -- Look me up
 camera = game.Workspace.CurrentCamera
-speed = 0.25 -- Speed of flight is kind of determined by this
+speed = 1.5 -- Speed of flight is kind of determined by this
 	flying = true
 	bp.MaxForce = Vector3.new(400000,400000,400000)
 	bg.MaxTorque = Vector3.new(400000,400000,400000)
@@ -355,7 +388,7 @@ bg.D = 10
 flying = false -- Determines if you're in flight or not
 rs = game:GetService("RunService") -- Look me up
 camera = game.Workspace.CurrentCamera
-speed = 0.5 -- Speed of flight is kind of determined by this
+speed = 1.5 -- Speed of flight is kind of determined by this
 end)
 NoClip.Name = "NoClip"
 NoClip.Parent = Main
