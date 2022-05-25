@@ -62,9 +62,11 @@ camera = game.Workspace.CurrentCamera
 speed = 1.5 -- Speed of flight is kind of determined by this
 local Main = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
+local SubFrame = Instance.new("Frame")
 local CrimSpawn = Instance.new("TextButton")
 local PrisonMain = Instance.new("TextButton")
 local TextLabel = Instance.new("TextLabel")
+local TextLabel2 = Instance.new("TextLabel")
 local Yard = Instance.new("TextButton")
 local CopSpawn = Instance.new("TextButton")
 local SaveTP = Instance.new("TextButton")
@@ -84,8 +86,10 @@ local FlyOff = Instance.new("TextButton")
 local NoClip = Instance.new("TextButton")
 local Clip = Instance.new("TextButton")
 local Weapons = Instance.new("TextButton")
-local SCRAM = Instance.new("TextButton")
+local TextBox = Instance.new("TextBox")
+local enter = Instance.new("TextButton")
 
+y=0
 --Properties:
 
 
@@ -98,6 +102,12 @@ MainFrame.Parent = Main
 MainFrame.BackgroundColor3 = Color3.fromRGB(129, 129, 129)
 MainFrame.Position = UDim2.new(0.140702471, 0, 0.529496431, 0)
 MainFrame.Size = UDim2.new(0, 190, 0, 245)
+
+SubFrame.Name = "SubFrame"
+SubFrame.Parent = Main
+SubFrame.BackgroundColor3 = Color3.fromRGB(129, 129, 129)
+SubFrame.Position = UDim2.new(0.140702471, 0, 0.389496431, 0)
+SubFrame.Size = UDim2.new(0, 190, 0, 60)
 
 CrimSpawn.Name = "CrimSpawn"
 CrimSpawn.Parent = Main
@@ -126,13 +136,45 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(926.125,99.98,2365.120))
 end)
 
 TextLabel.Parent = Main
-TextLabel.BackgroundColor3 = Color3.fromRGB(222, 4, 18)
+TextLabel.BackgroundColor3 = Color3.fromRGB(32, 12, 222)
 TextLabel.Position = UDim2.new(0.140702471, 0, 0.477553983, 0)
 TextLabel.Size = UDim2.new(0, 190, 0, 50)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "GrubHub Hax  V0.362"
+TextLabel.Text = "GrubHub Hax  V0.4"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.TextSize = 14.000
+
+TextLabel2.Parent = Main
+TextLabel2.BackgroundColor3 = Color3.fromRGB(32, 200, 12)
+TextLabel2.Position = UDim2.new(0.140702471, 0, 0.367553983, 0)
+TextLabel2.Size = UDim2.new(0, 190, 0, 25)
+TextLabel2.Font = Enum.Font.SourceSansBold
+TextLabel2.Text = "TP to Player"
+TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel2.TextSize = 14.000
+
+TextBox.Parent = Main
+TextBox.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+TextBox.Size = UDim2.new(0, 125, 0, 20)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.Text = "eeee"
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 14.000
+TextBox.Position = UDim2.new(0.160646672, 0, 0.405345308, 0)
+
+enter.Name = "enter"
+enter.Parent = Main
+enter.BackgroundColor3 = Color3.fromRGB(128, 128, 128)
+enter.Position = UDim2.new(0.165646672, 0, 0.431345308, 0)
+enter.Size = UDim2.new(0, 109, 0, 19)
+enter.Font = Enum.Font.SourceSans
+enter.Text = "enter"
+enter.TextColor3 = Color3.fromRGB(0, 0, 0)
+enter.TextSize = 12.000
+enter.MouseButton1Down:connect(function()
+getgenv().selectedPlayer = TextBox.Text
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(getgenv().selectedPlayer).Character:WaitForChild("HumanoidRootPart").CFrame
+end)
 
 Yard.Name = "Yard"
 Yard.Parent = Main
@@ -146,18 +188,7 @@ Yard.TextSize = 18.000
 Yard.MouseButton1Down:connect(function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(786.364,97.988,2465.035))
 end)
-SCRAM.Name = "SCRAM"
-SCRAM.Parent = Main
-SCRAM.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-SCRAM.Position = UDim2.new(0.252673592, 0, 0.568345308, 0)
-SCRAM.Size = UDim2.new(0, 49, 0, 159)
-SCRAM.Font = Enum.Font.SourceSans
-SCRAM.Text = "SCRAM"
-SCRAM.TextColor3 = Color3.fromRGB(0, 0, 0)
-SCRAM.TextSize = 18.000
-SCRAM.MouseButton1Down:connect(function()
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-346.653,84.3,1975.088))
-end)
+
 CopSpawn.Name = "Cop Spawn"
 CopSpawn.Parent = Main
 CopSpawn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -464,3 +495,4 @@ local function LOJZH_fake_script() -- OneShotKillM9.one shot kill
 end
 coroutine.wrap(LOJZH_fake_script)()
 end)
+
